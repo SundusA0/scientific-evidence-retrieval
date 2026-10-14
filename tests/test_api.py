@@ -22,3 +22,35 @@ def test_local_api_search_and_home(monkeypatch):
         assert unavailable.status_code == 400
         empty = client.post("/search", json={"query": "", "top_k": 1})
         assert empty.status_code == 422
+
+
+def test_reranker_api_uses_20_candidates(monkeypatch):
+    from sci_evidence.serving import SearchOutput
+
+    monkeypatch.setattr(
+        api, "load_scifact",
+        lambda *args, **kwargs: tiny_demo_dataset()
+    )
+    monkeypatch.delenv("SCI_EVIDENCE_RERANKER", raising=False)
+
+    observed = {}
+
+    def fake_search(self, query, *, method="bm25",
+                    top_k=5, candidate_k=50):
+        observed["candidate_k"] = candidate_k
+        return SearchOutput(
+            method=method, hits=[], elapsed_ms=1.0,
+            candidate_k=candidate_k
+        )
+
+    monkeypatch.setattr(api.SearchEngine, "search", fake_search)
+
+    with TestClient(api.app) as client:
+        response = client.post(
+            "/search",
+            json={"query": "caffeine", "method": "rerank", "top_k": 5}
+        )
+
+    assert response.status_code == 200
+    assert observed["candidate_k"] == 20
+    assert response.json()["candidate_k"] == 20
