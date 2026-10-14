@@ -244,3 +244,19 @@ Hybrid retrieval remains an exploratory research result rather than a
 demonstrated improvement.
 
 No further tuning was performed on the final test set.
+
+## Public fine-tuned model
+
+The trained model is publicly available on Hugging Face:
+
+https://huggingface.co/Sundus08/scifact-minilm-cross-encoder
+
+After installing project dependencies and downloading SciFact, run:
+
+`SCI_EVIDENCE_RERANKER=Sundus08/scifact-minilm-cross-encoder SCI_EVIDENCE_DEVICE=cpu python -m uvicorn sci_evidence.api:app --host 127.0.0.1 --port 8000`
+
+On Apple Silicon, use `SCI_EVIDENCE_DEVICE=mps`.
+
+The model downloads automatically on first use. The local application reranks 20 BM25 candidates using batch size 32. Original held-out test results used 50 candidates.
+
+Scores indicate predicted relevance, not scientific truth.
