@@ -76,7 +76,7 @@
       if (data.methods.includes('rerank')) {
         rerankOption.disabled=false;
         rerankOption.textContent='Fine-tuned Transformer reranker';
-        document.querySelector('#method-hint').textContent='Reranker reorders the top 50 BM25 papers with the locally loaded cross-encoder. Scores are logits, not probabilities.';
+        document.querySelector('#method-hint').textContent='Reranker reorders the top 20 BM25 papers with the locally loaded cross-encoder. Scores are logits, not probabilities.';
       }
     }).catch(e => {document.querySelector('#health').textContent='Offline';error.textContent=e.message;});
   form.addEventListener('submit', async event => {

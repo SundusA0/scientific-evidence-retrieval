@@ -63,7 +63,7 @@ def health():
 def search(request: SearchRequest):
     engine: SearchEngine = app.state.engine
     try:
-        result = engine.search(request.query, method=request.method, top_k=request.top_k)
+        result = engine.search(request.query, method=request.method, top_k=request.top_k, candidate_k=20)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     return {"query": request.query, "method": result.method,

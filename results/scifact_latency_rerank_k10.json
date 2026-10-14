@@ -1,0 +1,30 @@
+{
+  "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+  "local_model_safetensors_sha256": "527b3837398c033d20d66c7a9306735dd857e03f65f16b58e9c3e5867bae8b8f",
+  "timestamp_utc": "2026-10-14T01:44:17.238345+00:00",
+  "dataset": "BEIR SciFact TRAIN queries (not test)",
+  "method": "rerank",
+  "model": "runs/scifact_full_e1",
+  "device": "mps",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.11.0",
+  "parameters": {
+    "warmup_queries": 3,
+    "measured_queries": 50,
+    "seed": 42,
+    "top_k": 10,
+    "candidate_k": 10
+  },
+  "index_and_model_load_seconds": 2.447,
+  "latency": {
+    "n_queries": 50,
+    "mean_ms": 34.097607503063045,
+    "p50_ms": 33.908666504430585,
+    "p95_ms": 36.51774377358379,
+    "min_ms": 31.533083005342633,
+    "max_ms": 38.99674999411218,
+    "sequential_queries_per_sec": 29.327570854059726
+  },
+  "notes": "Sequential warm-query latency. Includes BM25 and (if rerank) cross-encoder forward pass, excludes indexing/model load, HTTP, browser and concurrency. CPU/MPS timings are environment-dependent. Model selection uses validation, not these timings or the final test metrics."
+}

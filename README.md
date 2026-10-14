@@ -88,7 +88,7 @@ Relevance judgments are incomplete; evaluation convention counts unjudged result
 ## Interactive search interface and latency evaluation (Phase 4)
 
 The interactive UI runs entirely on your **own laptop**, using the same SciFact corpus. It
-can search with BM25 alone or optionally rerank the top 50 BM25 results with your saved
+can search with BM25 alone or optionally rerank the top 20 BM25 results (UI default) with your saved
 fine-tuned cross-encoder. It does not use the SciFact test labels in the UI.
 
 Install the API dependencies in the existing project virtual environment:
