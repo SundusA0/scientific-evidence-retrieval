@@ -186,3 +186,24 @@ We evaluated reranking 10, 20, and 50 BM25 candidates using the same fine-tuned 
 The 20-candidate configuration reduced observed median latency by 57.6% relative to 50 candidates while producing the highest validation ranking metrics among the evaluated settings. It was selected as the interactive application default.
 
 These are exploratory, single-run comparisons rather than statistically established ranking gains. Latency measurements were performed sequentially in separate runs. The original final test results use 50 candidates and are retained unchanged.
+
+## Batch-size inference profiling
+
+With candidate-k=20 fixed, batch sizes 8, 16, and 32 were benchmarked on Apple MPS.
+
+| Batch size | p50 latency (50 queries) | p95 latency |
+|---|---:|---:|
+| 8 | 69.90 ms | 72.91 ms |
+| 16 | 65.58 ms | 71.26 ms |
+| 32 | 61.55 ms | 63.91 ms |
+
+A second comparison using 100 training queries and 5 warmup queries produced:
+
+| Batch size | p50 latency | p95 latency | Sequential throughput |
+|---|---:|---:|---:|
+| 16 | 65.73 ms | 69.92 ms | 15.09 queries/s |
+| 32 | 62.05 ms | 64.36 ms | 16.14 queries/s |
+
+Validation ranking metrics at batch size 32 remained nDCG@10=0.7560 and Recall@10=0.8395, matching the earlier batch-16 results to four decimal places.
+
+Batch size 32 was selected for the local API. Measurements are sequential, hardware-specific, and not production concurrency benchmarks.

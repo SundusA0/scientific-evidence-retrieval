@@ -13,6 +13,7 @@ def test_local_api_search_and_home(monkeypatch):
         status = client.get("/health").json()
         assert status["methods"] == ["bm25"]
         assert status["documents"] == 5
+        assert api.app.state.engine.batch_size == 32
         response = client.post("/search", json={"query": "solar panels", "method": "bm25", "top_k": 2})
         assert response.status_code == 200
         result = response.json()

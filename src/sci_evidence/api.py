@@ -29,7 +29,7 @@ async def lifespan(app: FastAPI):
         raise RuntimeError("SciFact dataset missing. Run: python -m sci_evidence download") from exc
     model_path = os.getenv("SCI_EVIDENCE_RERANKER") or None
     device = os.getenv("SCI_EVIDENCE_DEVICE", "cpu")
-    app.state.engine = SearchEngine(dataset.documents, reranker_model=model_path, device=device)
+    app.state.engine = SearchEngine(dataset.documents, reranker_model=model_path, device=device, batch_size=32)
     yield
 
 

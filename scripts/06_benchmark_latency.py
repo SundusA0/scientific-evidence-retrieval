@@ -2,7 +2,7 @@
 """Measure warm, sequential, server-side retrieval latency on TRAIN queries.
 
 Model load/index construction, network, and UI rendering are excluded.
-Reranker mode includes BM25 top-50 generation plus Transformer scoring.
+Reranker mode includes BM25 candidate retrieval plus Transformer scoring.
 Not a distributed throughput, stress, or concurrency benchmark.
 """
 
@@ -34,13 +34,14 @@ def parser():
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--top-k", type=int, default=10)
     p.add_argument("--candidate-k", type=int, default=50)
+    p.add_argument("--batch-size", type=int, default=16)
     p.add_argument("--output", type=Path)
     return p
 
 
 def main():
     args = parser().parse_args()
-    if args.queries < 1 or args.warmup < 0 or not 1 <= args.top_k <= args.candidate_k:
+    if args.queries < 1 or args.warmup < 0 or args.batch_size < 1 or not 1 <= args.top_k <= args.candidate_k:
         raise SystemExit("Require queries >= 1, warmup >= 0, 1 <= top-k <= candidate-k")
     ds = load_scifact(args.data, split="train")
     queries = list(ds.queries.values())
@@ -50,7 +51,7 @@ def main():
     init = perf_counter()
     engine = SearchEngine(ds.documents,
                           reranker_model=args.model if args.method == "rerank" else None,
-                          device=args.device)
+                          device=args.device, batch_size=args.batch_size)
     setup_s = perf_counter() - init
     for i in range(args.warmup):
         engine.search(queries[i % len(queries)], method=args.method,
@@ -78,7 +79,8 @@ def main():
         "python": sys.version.split()[0],
         "parameters": {"warmup_queries": args.warmup, "measured_queries": args.queries,
                        "seed": args.seed, "top_k": args.top_k,
-                       "candidate_k": args.candidate_k if args.method == "rerank" else None},
+                       "candidate_k": args.candidate_k if args.method == "rerank" else None,
+                       "batch_size": args.batch_size if args.method == "rerank" else None},
         "index_and_model_load_seconds": round(setup_s, 3),
         "latency": metrics,
         "notes": "Sequential warm-query latency. Includes BM25 and (if rerank) cross-encoder forward pass, excludes indexing/model load, HTTP, browser and concurrency. CPU/MPS timings are environment-dependent. Model selection uses validation, not these timings or the final test metrics.",
