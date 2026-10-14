@@ -1,0 +1,187 @@
+{
+  "experiment": "closed-loop reranker admission-control benchmark",
+  "timestamp_utc": "2026-10-14T16:02:34.035784+00:00",
+  "client_platform": "macOS-15.7.4-arm64-arm-64bit",
+  "python": "3.11.0",
+  "server_url": "http://127.0.0.1:8003",
+  "server_health": {
+    "status": "ok",
+    "corpus": "BEIR SciFact",
+    "documents": 5183,
+    "methods": [
+      "bm25",
+      "rerank"
+    ],
+    "device": "mps",
+    "reranker_model": "Sundus08/scifact-minilm-cross-encoder",
+    "max_inflight_rerank": 1,
+    "rerank_wait_ms": 300,
+    "max_queued_rerank": 4,
+    "waiting_rerank": 0
+  },
+  "parameters": {
+    "requested_concurrency": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "requests_per_level": 200,
+    "warmup_per_level": 5,
+    "top_k": 5,
+    "seed": 42,
+    "expected_capacity": 1,
+    "timeout_s": 30
+  },
+  "results": [
+    {
+      "concurrency": 1,
+      "requests": 200,
+      "accepted": 200,
+      "rejected_503": 0,
+      "errors": 0,
+      "error_examples": [],
+      "rejection_fraction": 0.0,
+      "retry_after_values": [],
+      "wall_seconds": 12.724,
+      "accepted_requests_per_second": 15.718,
+      "all_responses_per_second": 15.718,
+      "accepted_http_latency": {
+        "n": 200,
+        "mean_ms": 63.586,
+        "p50_ms": 63.164,
+        "p95_ms": 66.797,
+        "p99_ms": 71.345,
+        "min_ms": 59.85,
+        "max_ms": 85.59
+      },
+      "rejected_http_latency": null,
+      "accepted_server_search_latency": {
+        "n": 200,
+        "mean_ms": 62.688,
+        "p50_ms": 62.335,
+        "p95_ms": 65.675,
+        "p99_ms": 70.21,
+        "min_ms": 59.07,
+        "max_ms": 83.79
+      }
+    },
+    {
+      "concurrency": 4,
+      "requests": 200,
+      "accepted": 200,
+      "rejected_503": 0,
+      "errors": 0,
+      "error_examples": [],
+      "rejection_fraction": 0.0,
+      "retry_after_values": [],
+      "wall_seconds": 12.924,
+      "accepted_requests_per_second": 15.475,
+      "all_responses_per_second": 15.475,
+      "accepted_http_latency": {
+        "n": 200,
+        "mean_ms": 256.564,
+        "p50_ms": 255.536,
+        "p95_ms": 278.544,
+        "p99_ms": 296.77,
+        "min_ms": 64.107,
+        "max_ms": 297.957
+      },
+      "rejected_http_latency": null,
+      "accepted_server_search_latency": {
+        "n": 200,
+        "mean_ms": 64.086,
+        "p50_ms": 63.31,
+        "p95_ms": 72.287,
+        "p99_ms": 76.794,
+        "min_ms": 59.35,
+        "max_ms": 77.86
+      }
+    },
+    {
+      "concurrency": 8,
+      "requests": 200,
+      "accepted": 6,
+      "rejected_503": 194,
+      "errors": 0,
+      "error_examples": [],
+      "rejection_fraction": 0.97,
+      "retry_after_values": [
+        "1"
+      ],
+      "wall_seconds": 0.426,
+      "accepted_requests_per_second": 14.072,
+      "all_responses_per_second": 469.08,
+      "accepted_http_latency": {
+        "n": 6,
+        "mean_ms": 243.903,
+        "p50_ms": 259.173,
+        "p95_ms": 355.965,
+        "p99_ms": 359.98,
+        "min_ms": 85.99,
+        "max_ms": 360.983
+      },
+      "rejected_http_latency": {
+        "n": 194,
+        "mean_ms": 1.559,
+        "p50_ms": 0.816,
+        "p95_ms": 5.669,
+        "p99_ms": 7.367,
+        "min_ms": 0.552,
+        "max_ms": 8.276
+      },
+      "accepted_server_search_latency": {
+        "n": 6,
+        "mean_ms": 70.34,
+        "p50_ms": 67.96,
+        "p95_ms": 81.113,
+        "p99_ms": 83.831,
+        "min_ms": 63.91,
+        "max_ms": 84.51
+      }
+    },
+    {
+      "concurrency": 16,
+      "requests": 200,
+      "accepted": 6,
+      "rejected_503": 194,
+      "errors": 0,
+      "error_examples": [],
+      "rejection_fraction": 0.97,
+      "retry_after_values": [
+        "1"
+      ],
+      "wall_seconds": 0.399,
+      "accepted_requests_per_second": 15.032,
+      "all_responses_per_second": 501.072,
+      "accepted_http_latency": {
+        "n": 6,
+        "mean_ms": 225.954,
+        "p50_ms": 238.11,
+        "p95_ms": 334.261,
+        "p99_ms": 335.3,
+        "min_ms": 72.774,
+        "max_ms": 335.56
+      },
+      "rejected_http_latency": {
+        "n": 194,
+        "mean_ms": 5.7,
+        "p50_ms": 4.61,
+        "p95_ms": 11.38,
+        "p99_ms": 15.308,
+        "min_ms": 2.383,
+        "max_ms": 21.722
+      },
+      "accepted_server_search_latency": {
+        "n": 6,
+        "mean_ms": 65.712,
+        "p50_ms": 64.845,
+        "p95_ms": 69.697,
+        "p99_ms": 70.004,
+        "min_ms": 62.07,
+        "max_ms": 70.08
+      }
+    }
+  ],
+  "notes": "Local closed-loop fixed-request-count benchmark. Every request counted; HTTP 503 is an expected overload outcome and is never retried. Only HTTP 200 contributes to accepted throughput or success latency. Both load generator and single Uvicorn worker run on one computer. Accepted latency may look artificially low because many requests are rejected. No open-loop arrival process, SLO analysis, or production-tail-latency inference; p95/p99 are noisy with few successes."
+}

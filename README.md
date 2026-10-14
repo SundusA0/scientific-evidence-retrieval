@@ -361,3 +361,72 @@ python scripts/11_benchmark_cross_request_batching.py --model Sundus08/scifact-m
 ```
 
 Raw reports are stored in `results/scifact_api_concurrency_*.json`, `results/scifact_reranker_stage_profile.json`, and `results/scifact_cross_request_batching_pilot.json`. Timings depend on hardware, system load, workload order, and short sample sizes; no distributed serving or production SLA claims are made.
+
+## Reranker admission control and bounded waiting (exploratory)
+
+The SciFact FastAPI service supports **opt-in, per-process reranker admission control**. By default `SCI_EVIDENCE_MAX_INFLIGHT_RERANK=0`, so admission limiting is disabled and existing behavior is preserved. With a positive value, concurrent reranking executions are limited; BM25 requests are not subject to that limit. If capacity is exhausted, a request receives HTTP **503** with `Retry-After: 1`, either immediately or after a configurable, bounded wait. This is **not** cross-request GPU microbatching or a distributed rate limiter.
+
+Configuration:
+
+| Environment variable | Default | Meaning |
+|---|---:|---|
+| `SCI_EVIDENCE_MAX_INFLIGHT_RERANK` | `0` | Maximum simultaneous reranking executions; `0` disables limiting |
+| `SCI_EVIDENCE_RERANK_WAIT_MS` | `0` | Maximum time an admitted waiting request can wait for an inference slot (0–5000 ms) |
+| `SCI_EVIDENCE_MAX_QUEUED_RERANK` | `0` | Maximum requests waiting for a slot (0–1000); does not include active inference |
+
+The local benchmark ran one Uvicorn worker on Apple Silicon MPS, loading the published `Sundus08/scifact-minilm-cross-encoder` checkpoint with the 5,183-document SciFact corpus. Each concurrency setting used **200 requests** from the train-side query workload, after five warm-ups, without client retries. This is a **closed-loop fixed-count** load test on one computer, not an open-loop arrival model or a production service-level test.
+
+### Observed acceptance and latency
+
+The table contrasts (A) immediate rejection at capacity 1 with (B) one active inference, **four waiting positions**, and a **300 ms maximum wait**. The two policies were measured in separate runs. Successful responses and HTTP 503 rejections are both counted.
+
+| Policy | Concurrent clients | HTTP 200 | HTTP 503 | Rejection rate | Accepted HTTP p50 |
+|---|---:|---:|---:|---:|---:|
+| Immediate rejection | 1 | 200 | 0 | 0% | 63.27 ms |
+| Immediate rejection | 4 | 2 | 198 | 99% | 78.77 ms |
+| Immediate rejection | 8 | 2 | 198 | 99% | 68.29 ms |
+| Immediate rejection | 16 | 2 | 198 | 99% | 69.89 ms |
+| Bounded wait | 1 | 200 | 0 | 0% | 63.16 ms |
+| Bounded wait | 4 | 200 | 0 | 0% | 255.54 ms |
+| Bounded wait | 8 | 6 | 194 | 97% | 259.17 ms |
+| Bounded wait | 16 | 6 | 194 | 97% | 238.11 ms |
+
+Under moderate concurrency (four clients), short bounded waiting raised completion from **2/200 to 200/200**, at the cost of queueing latency. At eight and sixteen clients, **97%** of requests were still rejected. Zero unexpected transport/API errors were recorded in these runs. The earlier *unrestricted* concurrency benchmark accepted all its requests, but used **50**, not 200, per setting; the measurements are not a controlled same-run throughput comparison.
+
+**Interpretation and limitations:** Fast HTTP 503 responses can make request latency for the few accepted calls look deceptively good. At concurrency 4–16 the immediate-rejection run has only two successful observations per setting; the bounded-wait run has only six successful observations at concurrency 8 and 16. No trustworthy tail latency or steady-state acceptance estimate can be inferred from those small successful subsets. The fixed-count client dispatch also means a burst of immediate rejections shortens the run; observed rejection fractions are highly workload- and arrival-pattern-dependent. A `Retry-After` header is advisory, and the client in this experiment does not retry. These are measurements of overload **trade-offs**, not claims of improved throughput or production readiness.
+
+### Reproduce
+
+Install the project's API and ML dependencies and download SciFact as described above. For immediate rejection, start one server in a separate terminal:
+
+```bash
+SCI_EVIDENCE_RERANKER=Sundus08/scifact-minilm-cross-encoder \
+SCI_EVIDENCE_DEVICE=mps \
+SCI_EVIDENCE_MAX_INFLIGHT_RERANK=1 \
+python -m uvicorn sci_evidence.api:app --host 127.0.0.1 --port 8002
+```
+
+In another terminal, run:
+
+```bash
+python scripts/12_benchmark_rerank_admission.py --url http://127.0.0.1:8002 --expected-capacity 1 --requests 200 --concurrency 1 4 8 16 --warmup 5 --output results/scifact_admission_capacity1.json
+```
+
+Stop the first Uvicorn server (Ctrl+C), then start the bounded-wait configuration:
+
+```bash
+SCI_EVIDENCE_RERANKER=Sundus08/scifact-minilm-cross-encoder \
+SCI_EVIDENCE_DEVICE=mps \
+SCI_EVIDENCE_MAX_INFLIGHT_RERANK=1 \
+SCI_EVIDENCE_RERANK_WAIT_MS=300 \
+SCI_EVIDENCE_MAX_QUEUED_RERANK=4 \
+python -m uvicorn sci_evidence.api:app --host 127.0.0.1 --port 8003
+```
+
+In the client terminal:
+
+```bash
+python scripts/12_benchmark_rerank_admission.py --url http://127.0.0.1:8003 --expected-capacity 1 --requests 200 --concurrency 1 4 8 16 --warmup 5 --output results/scifact_admission_bounded_wait.json
+```
+
+Raw reports are committed in `results/scifact_admission_capacity1.json` and `results/scifact_admission_bounded_wait.json`. **Engineering decision:** leave limiting off by default. Admission control can bound in-flight GPU work, but acceptable queue length, wait time, rejection rate, retry behavior, and tail latency require service-specific load tests before deployment. Limits apply separately to each server process, not globally across multiple workers.
