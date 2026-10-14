@@ -1,0 +1,152 @@
+{
+  "timestamp_utc": "2026-10-14T00:52:41.844931+00:00",
+  "model": "runs/scifact_smoke",
+  "split": "validation",
+  "parameters": {
+    "candidate_k": 50,
+    "top_k": 10,
+    "n_queries": 10,
+    "seed": 42,
+    "validation_fraction": 0.1,
+    "limit": 10,
+    "device": "mps",
+    "max_length": 256
+  },
+  "bm25": {
+    "ndcg@10": 0.9613147192765459,
+    "recall@10": 0.95
+  },
+  "bm25_plus_reranker": {
+    "ndcg@10": 0.7761859507142915,
+    "recall@10": 0.95
+  },
+  "delta_reranker_minus_bm25": {
+    "ndcg@10": -0.18512876856225435,
+    "recall@10": 0.0
+  },
+  "candidate_recall@50": 0.95,
+  "evaluation_seconds": 1.78,
+  "per_query": [
+    {
+      "query_id": "897",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "886",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1371",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "285",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "751",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "309",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "877",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "999",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "444",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "898",
+      "bm25": {
+        "ndcg@10": 0.6131471927654584,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.6131471927654584,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 0.5
+    }
+  ],
+  "notes": "Unjudged documents counted as nonrelevant. Limited query runs are smoke tests only."
+}

@@ -1,0 +1,80 @@
+{
+  "dataset": "BEIR SciFact",
+  "split": "test",
+  "method": "dense",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "parameters": {
+    "k": 10,
+    "limit": 10,
+    "n_queries_evaluated": 10,
+    "n_documents": 5183
+  },
+  "metrics": {
+    "ndcg@10": 0.5639861607539755,
+    "recall@10": 0.8
+  },
+  "notes": "Unjudged papers are treated as nonrelevant. Limited runs are not comparable to full benchmarks.",
+  "timestamp_utc": "2026-10-14T00:42:54.154094+00:00",
+  "per_query": [
+    {
+      "query_id": "1",
+      "query": "0-dimensional biomaterials show inductive properties.",
+      "ndcg@10": 0.38685280723454163,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "3",
+      "query": "1,000 genomes project enables mapping of genetic sequence variation consisting of rare variants with larger penetrance effects than common variants.",
+      "ndcg@10": 0.5,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "5",
+      "query": "1/2000 in UK have abnormal PrP positivity.",
+      "ndcg@10": 0.6309297535714575,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "13",
+      "query": "5% of perinatal mortality is due to low birth weight.",
+      "ndcg@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "query_id": "36",
+      "query": "A deficiency of vitamin B12 increases blood levels of homocysteine.",
+      "ndcg@10": 0.4911492931622974,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "42",
+      "query": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects.",
+      "ndcg@10": 0.6309297535714575,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "48",
+      "query": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.",
+      "ndcg@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "query_id": "49",
+      "query": "ADAR1 binds to Dicer to cleave pre-miRNA.",
+      "ndcg@10": 1.0,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "50",
+      "query": "AIRE is expressed in some skin tumors.",
+      "ndcg@10": 1.0,
+      "recall@10": 1.0
+    },
+    {
+      "query_id": "51",
+      "query": "ALDH1 expression is associated with better breast cancer outcomes.",
+      "ndcg@10": 1.0,
+      "recall@10": 1.0
+    }
+  ]
+}

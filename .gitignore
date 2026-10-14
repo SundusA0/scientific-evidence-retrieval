@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.vscode/
+.env
+# Dataset and model caches: do not push datasets or downloaded models
+data/scifact/
+data/cache/
+runs/
+# Temporary experiment files
+results/tmp_*
+
+PHASE2_INSTRUCTIONS.md
+PHASE3_INSTRUCTIONS.md

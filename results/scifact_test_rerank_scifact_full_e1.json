@@ -1,0 +1,3632 @@
+{
+  "timestamp_utc": "2026-10-14T01:03:33.313248+00:00",
+  "model": "runs/scifact_full_e1",
+  "split": "test",
+  "parameters": {
+    "candidate_k": 50,
+    "top_k": 10,
+    "n_queries": 300,
+    "seed": 42,
+    "validation_fraction": 0.1,
+    "limit": null,
+    "device": "mps",
+    "max_length": 256
+  },
+  "bm25": {
+    "ndcg@10": 0.6646598637127541,
+    "recall@10": 0.7849444444444444
+  },
+  "bm25_plus_reranker": {
+    "ndcg@10": 0.6863193824372326,
+    "recall@10": 0.7902777777777777
+  },
+  "delta_reranker_minus_bm25": {
+    "ndcg@10": 0.021659518724478466,
+    "recall@10": 0.005333333333333301
+  },
+  "candidate_recall@50": 0.8703888888888889,
+  "evaluation_seconds": 49.04,
+  "per_query": [
+    {
+      "query_id": "1",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "3",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "5",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "13",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "36",
+      "bm25": {
+        "ndcg@10": 0.21840743681816419,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.37800210039683896,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "42",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "48",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.2890648263178879,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "49",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "50",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "51",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "53",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "54",
+      "bm25": {
+        "ndcg@10": 0.31546487678572877,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "56",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "57",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "70",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.8772153153380493,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "72",
+      "bm25": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "75",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "94",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "99",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "100",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "113",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "115",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "118",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "124",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "127",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "128",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "129",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "130",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "132",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "133",
+      "bm25": {
+        "ndcg@10": 0.4412576003965278,
+        "recall@10": 0.4
+      },
+      "reranked": {
+        "ndcg@10": 0.6355827475831716,
+        "recall@10": 0.8
+      },
+      "candidate_recall@50": 0.8
+    },
+    {
+      "query_id": "137",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "141",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "142",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "143",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "146",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "148",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "163",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "171",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "179",
+      "bm25": {
+        "ndcg@10": 0.6984152163370878,
+        "recall@10": 0.75
+      },
+      "reranked": {
+        "ndcg@10": 0.8318724637288826,
+        "recall@10": 0.75
+      },
+      "candidate_recall@50": 0.75
+    },
+    {
+      "query_id": "180",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "183",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "185",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "198",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "208",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "212",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3333333333333333,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "213",
+      "bm25": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "216",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "217",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "218",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "219",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "230",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "232",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "233",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "236",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "237",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "238",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "239",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "248",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "249",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "261",
+      "bm25": {
+        "ndcg@10": 0.23719771276929622,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.23719771276929622,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 0.5
+    },
+    {
+      "query_id": "268",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "269",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "274",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "275",
+      "bm25": {
+        "ndcg@10": 0.46927872602275644,
+        "recall@10": 0.3333333333333333
+      },
+      "reranked": {
+        "ndcg@10": 0.431733884398313,
+        "recall@10": 0.6666666666666666
+      },
+      "candidate_recall@50": 0.6666666666666666
+    },
+    {
+      "query_id": "279",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "294",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "295",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "298",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "300",
+      "bm25": {
+        "ndcg@10": 0.3333333333333333,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "303",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "312",
+      "bm25": {
+        "ndcg@10": 0.3333333333333333,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "314",
+      "bm25": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "324",
+      "bm25": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "327",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "338",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "343",
+      "bm25": {
+        "ndcg@10": 0.5706417189553201,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "350",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "354",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "362",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "380",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "384",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "385",
+      "bm25": {
+        "ndcg@10": 0.48381288316677695,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5249810332008933,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "386",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "388",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "399",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "410",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "411",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "415",
+      "bm25": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "421",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "431",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "436",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "437",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "439",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "440",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "443",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "452",
+      "bm25": {
+        "ndcg@10": 0.21840743681816419,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 0.5
+    },
+    {
+      "query_id": "475",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "478",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "491",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "501",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "502",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "507",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "508",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "513",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "514",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "516",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "517",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "521",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "525",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "527",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "528",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "532",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "533",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "535",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "536",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "539",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "540",
+      "bm25": {
+        "ndcg@10": 0.21840743681816419,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.6131471927654584,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "544",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "549",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "551",
+      "bm25": {
+        "ndcg@10": 0.31546487678572877,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "552",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "554",
+      "bm25": {
+        "ndcg@10": 0.3333333333333333,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "560",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "569",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "575",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "577",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "578",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "587",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "589",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "593",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "597",
+      "bm25": {
+        "ndcg@10": 0.9217868789962071,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.9469024295259745,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "598",
+      "bm25": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "613",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "619",
+      "bm25": {
+        "ndcg@10": 0.21840743681816419,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.18457569677956817,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 0.5
+    },
+    {
+      "query_id": "623",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3333333333333333,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "628",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "636",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "637",
+      "bm25": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "641",
+      "bm25": {
+        "ndcg@10": 0.6131471927654584,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "644",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "649",
+      "bm25": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "659",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "660",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "674",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "684",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "690",
+      "bm25": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "691",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "692",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "693",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "700",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "702",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "715",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "716",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "718",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "721",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "723",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "727",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "728",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5706417189553201,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "729",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "742",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "743",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "744",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "756",
+      "bm25": {
+        "ndcg@10": 0.2890648263178879,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "759",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "768",
+      "bm25": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "770",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "775",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "781",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "783",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "784",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "785",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "793",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "800",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "805",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "808",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "811",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "814",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "820",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "821",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "823",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "830",
+      "bm25": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "831",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "832",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "834",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "837",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "839",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "845",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "847",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "852",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "859",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "870",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "873",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.1208113026994942,
+        "recall@10": 0.2
+      },
+      "candidate_recall@50": 0.4
+    },
+    {
+      "query_id": "879",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "880",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "882",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "887",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "903",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "904",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "907",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "911",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "913",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "914",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "921",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "922",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "936",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "956",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "957",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "960",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "967",
+      "bm25": {
+        "ndcg@10": 0.9197207891481876,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "971",
+      "bm25": {
+        "ndcg@10": 0.6444638628256741,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.9047172294870751,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "975",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "982",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "985",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "993",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1012",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1014",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1019",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1020",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1021",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1024",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1029",
+      "bm25": {
+        "ndcg@10": 0.9010126104210695,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.7653606369886217,
+        "recall@10": 0.6666666666666666
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1041",
+      "bm25": {
+        "ndcg@10": 0.44130740935663865,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.20438239758848611,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1049",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1062",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1086",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1088",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1089",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1099",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1100",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1104",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1107",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1110",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1121",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1130",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1132",
+      "bm25": {
+        "ndcg@10": 0.23719771276929622,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 0.6131471927654584,
+        "recall@10": 0.5
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1137",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1140",
+      "bm25": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1144",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1146",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1150",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1163",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1175",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1179",
+      "bm25": {
+        "ndcg@10": 0.2890648263178879,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1180",
+      "bm25": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1185",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1187",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1191",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1194",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1196",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1197",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1199",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1200",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1202",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1204",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1207",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1213",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1216",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1221",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1225",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1226",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1232",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1241",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1245",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1259",
+      "bm25": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1262",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1266",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3562071871080222,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1270",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1271",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1272",
+      "bm25": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1273",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1274",
+      "bm25": {
+        "ndcg@10": 0.6653497124326151,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.9674679834891693,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1278",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1279",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1280",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1281",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1282",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1290",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1292",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1298",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1303",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1316",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.3010299956639812,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1319",
+      "bm25": {
+        "ndcg@10": 0.43067655807339306,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1320",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1332",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 0.0
+    },
+    {
+      "query_id": "1335",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1336",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1337",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1339",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1344",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1352",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1359",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1362",
+      "bm25": {
+        "ndcg@10": 0.5,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1363",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1368",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1370",
+      "bm25": {
+        "ndcg@10": 0.38685280723454163,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1379",
+      "bm25": {
+        "ndcg@10": 0.3973220069685352,
+        "recall@10": 0.5
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1382",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1385",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1389",
+      "bm25": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "reranked": {
+        "ndcg@10": 1.0,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    },
+    {
+      "query_id": "1395",
+      "bm25": {
+        "ndcg@10": 0.0,
+        "recall@10": 0.0
+      },
+      "reranked": {
+        "ndcg@10": 0.6309297535714575,
+        "recall@10": 1.0
+      },
+      "candidate_recall@50": 1.0
+    }
+  ],
+  "notes": "Unjudged documents counted as nonrelevant. Limited query runs are smoke tests only."
+}

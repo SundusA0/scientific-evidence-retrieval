@@ -1,0 +1,49 @@
+{
+  "source": "results/scifact_test_rerank_scifact_full_e1.json",
+  "model": "runs/scifact_full_e1",
+  "split": "test",
+  "n_queries": 300,
+  "timestamp_utc": "2026-10-14T01:09:05.142673+00:00",
+  "method": "Paired query bootstrap percentile 95% CI; two-sided sign-flip randomization test",
+  "metrics": {
+    "ndcg@10": {
+      "n_queries": 300,
+      "baseline_mean": 0.6646598637127541,
+      "reranked_mean": 0.6863193824372327,
+      "mean_delta": 0.021659518724478456,
+      "bootstrap_95pct_ci": [
+        -0.010560312311869574,
+        0.054775597525395965
+      ],
+      "sign_flip_two_sided_p": 0.20517948205179481,
+      "queries_improved": 67,
+      "queries_tied": 182,
+      "queries_worsened": 51,
+      "iterations": 10000,
+      "seed": 42
+    },
+    "recall@10": {
+      "n_queries": 300,
+      "baseline_mean": 0.7849444444444444,
+      "reranked_mean": 0.7902777777777779,
+      "mean_delta": 0.005333333333333334,
+      "bootstrap_95pct_ci": [
+        -0.032669444444444445,
+        0.044
+      ],
+      "sign_flip_two_sided_p": 0.7909209079092091,
+      "queries_improved": 22,
+      "queries_tied": 260,
+      "queries_worsened": 18,
+      "iterations": 10000,
+      "seed": 43
+    }
+  },
+  "limitations": [
+    "SciFact relevance labels are incomplete; unjudged results count as nonrelevant.",
+    "CIs and p-values assume queries are independent samples; paired sign-flip test assumes symmetry/exchangeability under its null.",
+    "Two metrics are examined; no multiple-testing correction is applied.",
+    "Model was selected on validation before evaluating the test set; do not tune subsequent versions on these test results.",
+    "A confidence interval including zero is not proof of no effect."
+  ]
+}
