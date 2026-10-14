@@ -172,3 +172,17 @@ Measured on an Apple M4 MacBook using 50 sequential SciFact training queries per
 The reranker has approximately 66 times higher median latency. Its measured test nDCG@10 was 0.6863 versus 0.6647 for BM25, but the ranking improvement was not statistically significant.
 
 These are machine-specific sequential measurements, not production serving benchmarks.
+
+## Candidate-pool optimization
+
+We evaluated reranking 10, 20, and 50 BM25 candidates using the same fine-tuned cross-encoder. Ranking quality was evaluated on 81 held-out training-side validation queries. Latency was measured separately on 50 SciFact training queries using Apple MPS.
+
+| Candidates | Validation nDCG@10 | Validation Recall@10 | p50 latency | p95 latency |
+|---|---:|---:|---:|---:|
+| 50 | 0.7477 | 0.8210 | 155.71 ms | 175.72 ms |
+| 20 | 0.7560 | 0.8395 | 66.05 ms | 74.47 ms |
+| 10 | 0.7378 | 0.8025 | 33.91 ms | 36.52 ms |
+
+The 20-candidate configuration reduced observed median latency by 57.6% relative to 50 candidates while producing the highest validation ranking metrics among the evaluated settings. It was selected as the interactive application default.
+
+These are exploratory, single-run comparisons rather than statistically established ranking gains. Latency measurements were performed sequentially in separate runs. The original final test results use 50 candidates and are retained unchanged.
