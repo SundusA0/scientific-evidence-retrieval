@@ -207,3 +207,40 @@ A second comparison using 100 training queries and 5 warmup queries produced:
 Validation ranking metrics at batch size 32 remained nDCG@10=0.7560 and Recall@10=0.8395, matching the earlier batch-16 results to four decimal places.
 
 Batch size 32 was selected for the local API. Measurements are sequential, hardware-specific, and not production concurrency benchmarks.
+
+## Exploratory hybrid retrieval experiment
+
+We investigated whether combining BM25 with pretrained dense retrieval
+improves scientific evidence retrieval.
+
+Using reciprocal rank fusion (RRF, constant 60), we combined the top 100
+BM25 and dense results and selected 20 candidates for cross-encoder
+reranking. Evaluation used the same 81 training-side validation queries.
+
+| Metric | BM25 + reranker | Hybrid + reranker |
+|---|---:|---:|
+| Candidate Recall@20 | 0.8519 | 0.8951 |
+| nDCG@10 | 0.7560 | 0.7655 |
+| Recall@10 | 0.8395 | 0.8519 |
+
+Paired exploratory uncertainty analysis:
+
+| Metric | Mean difference | 95% bootstrap CI | Sign-flip p-value |
+|---|---:|---:|---:|
+| nDCG@10 | +0.0095 | [-0.0131, +0.0401] | 0.6782 |
+| Recall@10 | +0.0123 | [-0.0247, +0.0494] | 1.0000 |
+
+For nDCG@10, 2 queries improved, 73 were unchanged, and 6 worsened.
+
+The largest improvement occurred for query 430, where dense retrieval
+recovered a known relevant document ranked 71st by BM25.
+
+The observed improvement was not statistically significant and depended
+heavily on a small number of queries. Additional dense retrieval also
+introduces unmeasured serving overhead.
+
+Decision: retain BM25 plus the fine-tuned cross-encoder as the default.
+Hybrid retrieval remains an exploratory research result rather than a
+demonstrated improvement.
+
+No further tuning was performed on the final test set.
