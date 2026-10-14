@@ -1,0 +1,37 @@
+{
+  "dataset": "BEIR TREC-COVID",
+  "experiment": "BM25 corpus-size and warm sequential query benchmark",
+  "timestamp_utc": "2026-10-14T14:54:51.912395+00:00",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "architecture": "arm64",
+  "python": "3.11.0",
+  "corpus_sha256": "aded69896598665082316d00df487d22212cc5a8611db05db34eb40d04ed00d7",
+  "parameters": {
+    "indexed_documents": 20000,
+    "available_documents": 171332,
+    "corpus_subset": "first N documents in corpus file",
+    "sampled_queries": 50,
+    "warmup_queries": 5,
+    "seed": 42,
+    "top_k": 10,
+    "bm25_k1": 1.5,
+    "bm25_b": 0.75
+  },
+  "corpus_load_seconds": 0.047,
+  "index_build_seconds": 0.679,
+  "peak_process_rss_mib_after_load": 62.84,
+  "peak_process_rss_mib_after_index": 197.88,
+  "peak_process_rss_mib_after_queries": 202.58,
+  "unique_index_terms": 80293,
+  "mean_document_tokens": 145.05,
+  "warm_sequential_query_latency": {
+    "n_queries": 50,
+    "mean_ms": 6.578949200920761,
+    "p50_ms": 6.572333499207161,
+    "p95_ms": 9.859231089649253,
+    "min_ms": 1.4499160170089453,
+    "max_ms": 11.240833002375439,
+    "sequential_queries_per_sec": 151.99995766193854
+  },
+  "notes": "Timing excludes corpus load and index build; includes only in-process BM25 lookup. Peak RSS covers the entire Python process (including the corpus subset), not index-only allocation. This is not concurrent throughput, and is not an IR relevance evaluation. The query workload uses TREC-COVID query texts without qrels. Subsets are not representative random samples; never compare quality across sizes."
+}

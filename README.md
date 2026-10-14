@@ -260,3 +260,38 @@ On Apple Silicon, use `SCI_EVIDENCE_DEVICE=mps`.
 The model downloads automatically on first use. The local application reranks 20 BM25 candidates using batch size 32. Original held-out test results used 50 candidates.
 
 Scores indicate predicted relevance, not scientific truth.
+
+## BM25 corpus-scaling study: BEIR TREC-COVID
+
+We measured how the project's **existing in-memory Python BM25 retriever** scales when indexing increasingly large subsets of the [BEIR TREC-COVID](https://github.com/beir-cellar/beir) scientific-document corpus. The full corpus contains 171,332 documents. This is a **retrieval-systems performance experiment**, not a new relevance-quality evaluation or a large-model training result.
+
+### Measurements
+
+Measured on an Apple Silicon MacBook Pro (16 GB RAM), running one local Python process per corpus size. Each experiment used the **same 50 shuffled TREC-COVID query texts** (seed 42), with five warm-up queries and BM25 top-10 retrieval. Corpus subsets comprise the **first N records** in the original corpus file; they are not random or representative samples. The index was rebuilt separately for every measurement.
+
+| Indexed documents | Index build | Peak process RSS | Warm p50/query | Warm p95/query | Sequential queries/s |
+|---:|---:|---:|---:|---:|---:|
+| 5,000 | 0.31 s | 93.2 MiB | 2.19 ms | 3.20 ms | 455.2 |
+| 20,000 | 0.68 s | 202.6 MiB | 6.57 ms | 9.86 ms | 152.0 |
+| 50,000 | 1.79 s | 507.0 MiB | 19.19 ms | 27.38 ms | 52.7 |
+| 171,332 (full) | 5.99 s | 1,612.8 MiB | 105.34 ms | 148.47 ms | 9.7 |
+
+Moving from 5,000 to 171,332 documents increased corpus size **34.3x**, median retrieval latency **48.1x**, and peak process RSS **17.3x**. The full-corpus process reached about **1.58 GiB** peak RSS and **105 ms** median query latency, *before any neural reranking*. At the largest size, latency increased more than corpus size alone between the 50,000-document and full-corpus measurements, motivating further profiling rather than proving an asymptotic complexity class.
+
+**Measurement boundaries:** Query timing includes in-process BM25 lookup only; it excludes file loading, index construction, HTTP overhead, model loading, and Transformer inference. Peak RSS reflects the *whole Python process* (including loaded documents), **not** the postings index by itself. Reported queries/second is derived from **sequential** query timings and does **not** measure concurrent server throughput. Only one 50-query sample per corpus size was taken, without confidence intervals; numbers are hardware- and workload-dependent. No relevance judgments were used, and no ranking accuracy claims follow from these results.
+
+### Reproduce
+
+1. Download `trec-covid.zip` from the [BEIR dataset downloads](https://github.com/beir-cellar/beir) and extract its `trec-covid/` directory under `data/` (the dataset is excluded from Git).
+2. Install the project and test its scaling benchmark: `python -m pip install -e '.[dev]'` followed by `python -m pytest tests/test_corpus_scale.py`.
+3. Execute the same four corpus-size runs:
+
+```bash
+for n in 5000 20000 50000 0; do
+  python scripts/08_benchmark_corpus_scale.py --max-docs "$n" --queries 50 --warmup 5
+done
+```
+
+The value `--max-docs 0` indexes all available documents. Machine-readable reports, including timestamps, environment details, corpus checksum, workload settings, and latency summaries, are saved as `results/trec_covid_bm25_scale_*.json`.
+
+**Next profiling questions:** quantify per-stage costs inside BM25 (tokenization, postings traversal, scoring, top-k selection), explain latency growth on high-frequency query terms, and benchmark p95/p99 latency under concurrent HTTP requests separately. A distributed or production-scale serving claim would require additional experiments.
