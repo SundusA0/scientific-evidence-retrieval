@@ -1,0 +1,60 @@
+{
+  "experiment": "closed-loop HTTP concurrency (one local Uvicorn worker)",
+  "timestamp_utc": "2026-10-14T15:17:52.214234+00:00",
+  "client_platform": "macOS-15.7.4-arm64-arm-64bit",
+  "client_python": "3.11.0",
+  "url": "http://127.0.0.1:8001",
+  "server_health": {
+    "status": "ok",
+    "corpus": "BEIR SciFact",
+    "documents": 5183,
+    "methods": [
+      "bm25",
+      "rerank"
+    ],
+    "device": "mps",
+    "reranker_model": "Sundus08/scifact-minilm-cross-encoder"
+  },
+  "parameters": {
+    "method": "rerank",
+    "requests_per_level": 50,
+    "warmup_per_level": 5,
+    "top_k": 5,
+    "seed": 42,
+    "concurrency_levels": [
+      8
+    ],
+    "client_timeout_s": 60,
+    "workload": "SciFact train-side query texts (no qrels used for scoring)"
+  },
+  "results": [
+    {
+      "concurrency": 8,
+      "requests": 50,
+      "successful": 50,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 2.97,
+      "successful_requests_per_second": 16.834,
+      "http_latency": {
+        "n": 50,
+        "mean_ms": 460.772,
+        "p50_ms": 471.721,
+        "p95_ms": 505.998,
+        "p99_ms": 524.329,
+        "min_ms": 133.385,
+        "max_ms": 534.83
+      },
+      "server_search_latency": {
+        "n": 50,
+        "mean_ms": 453.303,
+        "p50_ms": 467.2,
+        "p95_ms": 495.919,
+        "p99_ms": 508.973,
+        "min_ms": 132.39,
+        "max_ms": 511.3
+      }
+    }
+  ],
+  "notes": "One local server and one load-generator process on the same computer. Closed-loop fixed-request-count test, not an open-loop target-QPS test. HTTP latency includes client/network/response overhead and queueing; API-reported search time excludes those. Thread concurrency is not GPU-wide batching, multi-GPU training, or production throughput. p99 is especially noisy with small samples. No ranking-quality claims."
+}

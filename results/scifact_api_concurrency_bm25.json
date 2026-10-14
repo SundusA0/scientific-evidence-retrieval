@@ -1,0 +1,144 @@
+{
+  "experiment": "closed-loop HTTP concurrency (one local Uvicorn worker)",
+  "timestamp_utc": "2026-10-14T15:06:50.819764+00:00",
+  "client_platform": "macOS-15.7.4-arm64-arm-64bit",
+  "client_python": "3.11.0",
+  "url": "http://127.0.0.1:8000",
+  "server_health": {
+    "status": "ok",
+    "corpus": "BEIR SciFact",
+    "documents": 5183,
+    "methods": [
+      "bm25",
+      "rerank"
+    ],
+    "device": "mps",
+    "reranker_model": "runs/scifact_full_e1"
+  },
+  "parameters": {
+    "method": "bm25",
+    "requests_per_level": 200,
+    "warmup_per_level": 10,
+    "top_k": 5,
+    "seed": 42,
+    "concurrency_levels": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "client_timeout_s": 60,
+    "workload": "SciFact train-side query texts (no qrels used for scoring)"
+  },
+  "results": [
+    {
+      "concurrency": 1,
+      "requests": 200,
+      "successful": 200,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 0.71,
+      "successful_requests_per_second": 281.732,
+      "http_latency": {
+        "n": 200,
+        "mean_ms": 3.521,
+        "p50_ms": 3.258,
+        "p95_ms": 6.084,
+        "p99_ms": 8.859,
+        "min_ms": 0.694,
+        "max_ms": 19.034
+      },
+      "server_search_latency": {
+        "n": 200,
+        "mean_ms": 2.772,
+        "p50_ms": 2.645,
+        "p95_ms": 5.263,
+        "p99_ms": 7.04,
+        "min_ms": 0.14,
+        "max_ms": 13.98
+      }
+    },
+    {
+      "concurrency": 4,
+      "requests": 200,
+      "successful": 200,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 0.617,
+      "successful_requests_per_second": 324.226,
+      "http_latency": {
+        "n": 200,
+        "mean_ms": 12.263,
+        "p50_ms": 12.092,
+        "p95_ms": 17.115,
+        "p99_ms": 18.405,
+        "min_ms": 3.629,
+        "max_ms": 19.711
+      },
+      "server_search_latency": {
+        "n": 200,
+        "mean_ms": 2.687,
+        "p50_ms": 2.6,
+        "p95_ms": 4.659,
+        "p99_ms": 5.811,
+        "min_ms": 0.13,
+        "max_ms": 6.07
+      }
+    },
+    {
+      "concurrency": 8,
+      "requests": 200,
+      "successful": 200,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 0.551,
+      "successful_requests_per_second": 363.211,
+      "http_latency": {
+        "n": 200,
+        "mean_ms": 21.722,
+        "p50_ms": 22.163,
+        "p95_ms": 29.116,
+        "p99_ms": 30.251,
+        "min_ms": 3.939,
+        "max_ms": 30.675
+      },
+      "server_search_latency": {
+        "n": 200,
+        "mean_ms": 2.446,
+        "p50_ms": 2.335,
+        "p95_ms": 4.298,
+        "p99_ms": 5.211,
+        "min_ms": 0.13,
+        "max_ms": 6.03
+      }
+    },
+    {
+      "concurrency": 16,
+      "requests": 200,
+      "successful": 200,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 0.579,
+      "successful_requests_per_second": 345.233,
+      "http_latency": {
+        "n": 200,
+        "mean_ms": 44.501,
+        "p50_ms": 45.093,
+        "p95_ms": 58.977,
+        "p99_ms": 69.456,
+        "min_ms": 5.235,
+        "max_ms": 70.757
+      },
+      "server_search_latency": {
+        "n": 200,
+        "mean_ms": 2.572,
+        "p50_ms": 2.39,
+        "p95_ms": 4.741,
+        "p99_ms": 5.436,
+        "min_ms": 0.17,
+        "max_ms": 15.88
+      }
+    }
+  ],
+  "notes": "One local server and one load-generator process on the same computer. Closed-loop fixed-request-count test, not an open-loop target-QPS test. HTTP latency includes client/network/response overhead and queueing; API-reported search time excludes those. Thread concurrency is not GPU-wide batching, multi-GPU training, or production throughput. p99 is especially noisy with small samples. No ranking-quality claims."
+}

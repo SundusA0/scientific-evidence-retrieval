@@ -295,3 +295,69 @@ done
 The value `--max-docs 0` indexes all available documents. Machine-readable reports, including timestamps, environment details, corpus checksum, workload settings, and latency summaries, are saved as `results/trec_covid_bm25_scale_*.json`.
 
 **Next profiling questions:** quantify per-stage costs inside BM25 (tokenization, postings traversal, scoring, top-k selection), explain latency growth on high-frequency query terms, and benchmark p95/p99 latency under concurrent HTTP requests separately. A distributed or production-scale serving claim would require additional experiments.
+
+## API concurrency, inference profiling, and cross-request batching (exploratory)
+
+We profiled the SciFact local FastAPI service with the publicly available [fine-tuned cross-encoder](https://huggingface.co/Sundus08/scifact-minilm-cross-encoder) running on Apple Silicon MPS. This section reports **single-machine measurements**, not production load-test guarantees or ranking-quality improvements. The API reranks the top 20 BM25 candidates per query.
+
+### Concurrent HTTP requests
+
+A controlled local server on `127.0.0.1:8001` served the same SciFact corpus (5,183 abstracts) and model. The benchmark used a closed-loop HTTP client with the indicated maximum outstanding requests. Each BM25 setting measured 200 requests; each reranking setting measured 50 requests, after warm-up. Figures are *client-observed HTTP* times, including server scheduling and response overhead.
+
+| Method | Concurrent clients | Successful requests | Throughput (req/s) | HTTP p50 (ms) | HTTP p95 (ms) | HTTP p99 (ms) |
+|---|---:|---:|---:|---:|---:|---:|
+| BM25 | 1 | 200/200 | 319.17 | 3.06 | 4.96 | 6.34 |
+| BM25 | 4 | 200/200 | 343.05 | 11.36 | 16.04 | 23.95 |
+| BM25 | 8 | 200/200 | 377.42 | 21.21 | 26.29 | 28.44 |
+| BM25 | 16 | 200/200 | 354.25 | 45.70 | 62.95 | 72.52 |
+| Reranker (MPS) | 1 | 50/50 | 15.58 | 63.20 | 70.54 | 71.61 |
+| Reranker (MPS) | 4 | 50/50 | 16.41 | 239.94 | 277.91 | 287.71 |
+| Reranker (MPS) | 8 | 50/50 | 16.83 | 471.72 | 506.00 | 524.33 |
+| Reranker (MPS) | 16 | 50/50 | 15.94 | 977.76 | 1166.40 | 1167.66 |
+
+Reranker throughput plateaued at roughly 16–17 requests/s in this exploratory run while response latency rose sharply with concurrency. Eight clients showed the highest **observed** throughput, but these short runs do not establish an optimal concurrency level. In particular, tail estimates from only 50 requests are unstable.
+
+### Sequential inference-stage profiling
+
+With 50 SciFact train-side queries, 5 warm-ups, and 20 BM25 candidates per query, the profiler synchronized MPS to attribute time to individual stages. This changes timing behavior relative to normal serving.
+
+| Stage | Median (ms) | p95 (ms) |
+|---|---:|---:|
+| BM25 candidate retrieval | 2.33 | 4.11 |
+| Tokenization | 3.48 | 4.21 |
+| Input transfer to MPS | 1.24 | 1.39 |
+| Transformer forward pass | 54.22 | 54.84 |
+| Transfer scores to CPU | 0.23 | 0.29 |
+| Sorting / ranking | <0.01 | 0.01 |
+| Total | 61.50 | 63.08 |
+
+The Transformer forward pass occupied about **88% of median total time** in this setup; it was the dominant measured component. Medians for separate stages need not sum exactly to the median total.
+
+### Cross-request batching feasibility
+
+We tested *offline simulated batching*: 80 fixed train-side queries, identical BM25 top-20 candidates, two repeats, and group sizes of 1, 2, 4, or 8 queries per model call. Candidate generation, HTTP request handling, real request arrivals, queue waiting, and model initialization were excluded. Each grouped forward pass scores up to `20 × group_size` query-document pairs.
+
+| Queries per batch | Pairs per forward | Throughput (queries/s) | Amortized ms/query | Batch p95 (ms) | Top-5 agreement vs. unbatched |
+|---|---:|---:|---:|---:|---:|
+| 1 | 20 | 16.29 | 61.38 | 69.31 | 100% |
+| 2 | 40 | 17.19 | 58.17 | 122.30 | 100% |
+| 4 | 80 | 17.75 | 56.35 | 228.02 | 100% |
+| 8 | 160 | 13.48 | 74.21 | 603.29 | 100% |
+
+Four-query batches increased observed *offline* throughput by **~9%** compared with one-query batches, while eight-query batches were slower. Batch p95 is **not request-level p95**; a real microbatching queue would add wait time. Top-5 agreement on this specific workload does not guarantee identical logits or behavior on arbitrary inputs.
+
+**Engineering decision:** Do not claim that microbatching improves online service latency or deploy a queue based on this pilot. First repeat comparisons across run orders and measure request-level queueing, overload behavior, throughput, and ranking equivalence under a real concurrent arrival workload. A bounded in-flight admission policy may be more valuable than increasing GPU batch size on this hardware.
+
+### Reproduce
+
+Start one Uvicorn server in a separate terminal with the documented public model, changing `--port` to `8001` if needed. Then run the benchmarks from the repository root with dependencies installed:
+
+```bash
+python scripts/09_benchmark_api_concurrency.py --url http://127.0.0.1:8001 --method bm25 --requests 200 --concurrency 1 4 8 16 --warmup 10
+python scripts/09_benchmark_api_concurrency.py --url http://127.0.0.1:8001 --method rerank --requests 50 --concurrency 1 4 8 16 --warmup 5
+# Stop the API process before standalone MPS profiling to avoid GPU interference.
+python scripts/10_profile_reranker_stages.py --model Sundus08/scifact-minilm-cross-encoder --device mps --queries 50 --warmup 5 --candidate-k 20 --batch-size 32
+python scripts/11_benchmark_cross_request_batching.py --model Sundus08/scifact-minilm-cross-encoder --device mps --queries 80 --candidate-k 20 --group-sizes 1 2 4 8 --warmup 3 --repeats 2
+```
+
+Raw reports are stored in `results/scifact_api_concurrency_*.json`, `results/scifact_reranker_stage_profile.json`, and `results/scifact_cross_request_batching_pilot.json`. Timings depend on hardware, system load, workload order, and short sample sizes; no distributed serving or production SLA claims are made.

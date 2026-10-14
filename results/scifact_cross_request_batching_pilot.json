@@ -1,0 +1,78 @@
+{
+  "experiment": "Sequential simulated cross-request inference batching, not an HTTP server",
+  "timestamp_utc": "2026-10-14T15:40:32.013349+00:00",
+  "dataset": "SciFact training-side queries; fixed BM25 candidates",
+  "model": "Sundus08/scifact-minilm-cross-encoder",
+  "device": "mps",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "architecture": "arm64",
+  "parameters": {
+    "queries": 80,
+    "candidate_k": 20,
+    "top_k": 5,
+    "group_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "repeats": 2,
+    "warmup_batches_per_size": 3,
+    "seed": 42
+  },
+  "results": [
+    {
+      "group_size": 1,
+      "maximum_pairs_per_forward": 20,
+      "n_batches": 160,
+      "n_query_inferences": 160,
+      "batch_p50_ms": 59.67714550206438,
+      "batch_p95_ms": 69.31261520221597,
+      "mean_batch_ms": 61.383252830091806,
+      "amortized_ms_per_query": 61.383252830091806,
+      "inference_queries_per_second": 16.29108843038979,
+      "max_abs_logit_difference": 0.0,
+      "top_k_exact_match_fraction": 1.0
+    },
+    {
+      "group_size": 2,
+      "maximum_pairs_per_forward": 40,
+      "n_batches": 80,
+      "n_query_inferences": 160,
+      "batch_p50_ms": 115.0450619898038,
+      "batch_p95_ms": 122.30201456259238,
+      "mean_batch_ms": 116.33744788305194,
+      "amortized_ms_per_query": 58.16872394152597,
+      "inference_queries_per_second": 17.191369042326745,
+      "max_abs_logit_difference": 0.0,
+      "top_k_exact_match_fraction": 1.0
+    },
+    {
+      "group_size": 4,
+      "maximum_pairs_per_forward": 80,
+      "n_batches": 40,
+      "n_query_inferences": 160,
+      "batch_p50_ms": 224.701687504421,
+      "batch_p95_ms": 228.0153000028804,
+      "mean_batch_ms": 225.41480317377136,
+      "amortized_ms_per_query": 56.35370079344284,
+      "inference_queries_per_second": 17.745063517041586,
+      "max_abs_logit_difference": 0.0,
+      "top_k_exact_match_fraction": 1.0
+    },
+    {
+      "group_size": 8,
+      "maximum_pairs_per_forward": 160,
+      "n_batches": 20,
+      "n_query_inferences": 160,
+      "batch_p50_ms": 592.0648750034161,
+      "batch_p95_ms": 603.2872399111511,
+      "mean_batch_ms": 593.648977248813,
+      "amortized_ms_per_query": 74.20612215610163,
+      "inference_queries_per_second": 13.475977061520316,
+      "max_abs_logit_difference": 0.0,
+      "top_k_exact_match_fraction": 1.0
+    }
+  ],
+  "notes": "Each group represents simultaneous *availability* of queries, not simulated arrival times or a serving queue. Includes tokenizer, H2D, model forward, D2H and per-query ranking; excludes BM25, model/index setup, network, and queueing delay. A batch with G queries scores G*candidate_k pairs. Amortized latency is not individual HTTP response latency. Larger groups may change padding and floating-point logits. Single-machine, exploratory performance data only."
+}

@@ -1,0 +1,88 @@
+{
+  "experiment": "closed-loop HTTP concurrency (one local Uvicorn worker)",
+  "timestamp_utc": "2026-10-14T15:11:13.054620+00:00",
+  "client_platform": "macOS-15.7.4-arm64-arm-64bit",
+  "client_python": "3.11.0",
+  "url": "http://127.0.0.1:8001",
+  "server_health": {
+    "status": "ok",
+    "corpus": "BEIR SciFact",
+    "documents": 5183,
+    "methods": [
+      "bm25",
+      "rerank"
+    ],
+    "device": "mps",
+    "reranker_model": "Sundus08/scifact-minilm-cross-encoder"
+  },
+  "parameters": {
+    "method": "rerank",
+    "requests_per_level": 50,
+    "warmup_per_level": 5,
+    "top_k": 5,
+    "seed": 42,
+    "concurrency_levels": [
+      1,
+      4
+    ],
+    "client_timeout_s": 60,
+    "workload": "SciFact train-side query texts (no qrels used for scoring)"
+  },
+  "results": [
+    {
+      "concurrency": 1,
+      "requests": 50,
+      "successful": 50,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 3.209,
+      "successful_requests_per_second": 15.582,
+      "http_latency": {
+        "n": 50,
+        "mean_ms": 64.131,
+        "p50_ms": 63.197,
+        "p95_ms": 70.543,
+        "p99_ms": 71.609,
+        "min_ms": 59.331,
+        "max_ms": 71.657
+      },
+      "server_search_latency": {
+        "n": 50,
+        "mean_ms": 63.134,
+        "p50_ms": 62.285,
+        "p95_ms": 69.208,
+        "p99_ms": 70.271,
+        "min_ms": 58.42,
+        "max_ms": 70.34
+      }
+    },
+    {
+      "concurrency": 4,
+      "requests": 50,
+      "successful": 50,
+      "errors": 0,
+      "error_examples": [],
+      "wall_seconds": 3.046,
+      "successful_requests_per_second": 16.413,
+      "http_latency": {
+        "n": 50,
+        "mean_ms": 238.511,
+        "p50_ms": 239.939,
+        "p95_ms": 277.908,
+        "p99_ms": 287.71,
+        "min_ms": 123.216,
+        "max_ms": 293.679
+      },
+      "server_search_latency": {
+        "n": 50,
+        "mean_ms": 231.859,
+        "p50_ms": 233.665,
+        "p95_ms": 254.0,
+        "p99_ms": 269.687,
+        "min_ms": 121.79,
+        "max_ms": 278.63
+      }
+    }
+  ],
+  "notes": "One local server and one load-generator process on the same computer. Closed-loop fixed-request-count test, not an open-loop target-QPS test. HTTP latency includes client/network/response overhead and queueing; API-reported search time excludes those. Thread concurrency is not GPU-wide batching, multi-GPU training, or production throughput. p99 is especially noisy with small samples. No ranking-quality claims."
+}
