@@ -85,17 +85,90 @@ The final command computes paired bootstrap confidence intervals and exploratory
 
 Relevance judgments are incomplete; evaluation convention counts unjudged results as nonrelevant. Weak-negative training can introduce label noise. Reported test metrics are single-run observations, not replicated across different training seeds. The paired analysis assumes independent queries and uses exploratory, uncorrected tests for two metrics. No claims of truth verification, state-of-the-art performance, production readiness, or generalization beyond SciFact follow from these experiments.
 
-## Optional API
+## Interactive search interface and latency evaluation (Phase 4)
 
-A simple BM25 endpoint is included (not the reranker):
+The interactive UI runs entirely on your **own laptop**, using the same SciFact corpus. It
+can search with BM25 alone or optionally rerank the top 50 BM25 results with your saved
+fine-tuned cross-encoder. It does not use the SciFact test labels in the UI.
+
+Install the API dependencies in the existing project virtual environment:
 
 ```bash
-python -m pip install -e '.[api]'
-python -m uvicorn sci_evidence.api:app --reload
+python -m pip install -e '.[dev,api]'
+python -m pytest
+python scripts/07_verify_results.py
 ```
 
-Navigate to `http://127.0.0.1:8000/docs`.
+The verification command checks the saved 300-query reports, per-query values, and
+aggregate means/deltas. It **does not reproduce the training run**.
+
+Launch the BM25 interface (requires downloaded `data/scifact`):
+
+```bash
+python -m uvicorn sci_evidence.api:app --host 127.0.0.1 --port 8000
+```
+
+Visit `http://127.0.0.1:8000/`. Stop with `Ctrl+C`. API documentation is at `/docs`.
+To enable your **locally saved** trained model, use instead (in the terminal on
+which the virtual environment is active):
+
+```bash
+SCI_EVIDENCE_RERANKER=runs/scifact_full_e1 SCI_EVIDENCE_DEVICE=mps \
+  python -m uvicorn sci_evidence.api:app --host 127.0.0.1 --port 8000
+```
+
+The fine-tuned checkpoint is intentionally Git-ignored (not distributed with
+this repository). On a machine without a trained checkpoint, the interface
+supports BM25 only until the training script is run. Use
+`SCI_EVIDENCE_DEVICE=cpu` if MPS is not available.
+
+**Measure latency on training-side queries, not the final test set.** The default
+experiment is warm, sequential query latency (model loading and index creation
+are **excluded**). Query latency includes the first-stage BM25 retrieval and,
+when enabled, the cross-encoder forward pass and score transfer to CPU.
+
+```bash
+python scripts/06_benchmark_latency.py --method bm25 --queries 10
+python scripts/06_benchmark_latency.py --method rerank \
+  --model runs/scifact_full_e1 --device mps --queries 10
+```
+
+For a more stable comparison use `--queries 100 --warmup 5` for **both** methods,
+and save the resulting `results/scifact_latency_bm25.json` and
+`results/scifact_latency_rerank.json` after measuring on your Mac. The reports
+include the corpus SHA-256 checksum and the local model weights checksum when
+available. They also specify machine architecture, Python version, dataset,
+query count, model, and retrieval parameters. Latency is hardware-dependent;
+the reported sequential queries/second is not concurrency throughput.
+
+The browser shows server-side milliseconds for each search, rather than complete
+user-perceived wall-clock latency. BM25's score and the reranker's logit are
+not calibrated against each other. The API does not claim to determine which
+papers support or refute a particular scientific claim.
+
+## Future work
+
+- Profile on MPS versus CPU and report warm-query p50 and p95 latency alongside ranking metrics.
+- Investigate label noise introduced by BM25-mined unjudged training negatives.
+- Run multiple training seeds **on training/validation only** and reserve an entirely new final evaluation dataset for any newly tuned model.
+- Consider distillation or optimized serving if the cross-encoder overhead is too large.
 
 ## Attribution
 
 Dataset: BEIR SciFact. Starting pretrained reranker: `cross-encoder/ms-marco-MiniLM-L-6-v2`; pretrained dense baseline: `sentence-transformers/all-MiniLM-L6-v2`. All results are from the user's local experiments, not independently reproduced on a separate machine.
+
+
+## Inference latency on Apple Silicon
+
+Measured on an Apple M4 MacBook using 50 sequential SciFact training queries per method, with 3 warmup queries. Model loading and initialization were excluded.
+
+| Metric | BM25 (CPU) | Fine-tuned reranker (MPS) |
+|---|---:|---:|
+| p50 latency | 2.37 ms | 155.71 ms |
+| p95 latency | 4.12 ms | 175.72 ms |
+| Mean latency | 2.28 ms | 160.06 ms |
+| Sequential throughput | 439.42 queries/s | 6.25 queries/s |
+
+The reranker has approximately 66 times higher median latency. Its measured test nDCG@10 was 0.6863 versus 0.6647 for BM25, but the ranking improvement was not statistically significant.
+
+These are machine-specific sequential measurements, not production serving benchmarks.
